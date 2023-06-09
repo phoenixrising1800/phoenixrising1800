@@ -1,10 +1,10 @@
-### Hi there 👋
-**About Me**
+<!--### Hi there 👋 -->
+# **About Me**
 
-- 📍 Undergrad pursuing my **B.S. in Computer Science** with a concentration in **_Cybersecurity_*
+- 📍 Undergrad pursuing my **B.S. in Computer Science** with a concentration in <u>**_Cybersecurity_**</u>
 - 🔭 I’m currently working on:
-    * Extracting data from KaiOS devices (sqlite-scraper) 
-    * Parsing vehicle infotainment logs to extract forensics data (VLEAPP) 
+    * Extracting data from KaiOS devices ([_sqlite-scraper_](https://github.com/joedinsmoor/sqlite_scraper)) 
+    * Parsing vehicle infotainment logs to extract forensics data as a contributor ([_VLEAPP_](https://github.com/abrignoni/VLEAPP)) 
 - 😄 Pronouns: she/her
 
 
@@ -12,7 +12,7 @@
     <img src="https://github-stats-alpha.vercel.app/api?username=phoenixrising1800&cc=22272e&tc=37BCF6&ic=fff&bc=0000">
 </a>
 
-My Github Stats
+### My Github Stats
 
 ![](http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=phoenixrising1800&theme=dracula) 
 
