@@ -1,8 +1,10 @@
 ### Hi there 👋
-
 **About Me**
 
-- 🔭 I’m currently working on extracting data from sqlite dbs from KaiOS devices
+- 📍 Undergrad pursuing my **B.S. in Computer Science** with a concentration in **_Cybersecurity_*
+- 🔭 I’m currently working on:
+    * Extracting data from KaiOS devices (sqlite-scraper) 
+    * Parsing vehicle infotainment logs to extract forensics data (VLEAPP) 
 - 😄 Pronouns: she/her
 
 
