@@ -1,3 +1,6 @@
+" .Vimrc configuration
+" Author: Nixy (@phoenixrising1800)
+
 set nocompatible
 
 " Aesthetic
@@ -7,7 +10,7 @@ set t_Co=256
 colorscheme desert
 
 " Leader
-let mapleader = " "
+let mapleader = ","
 
 set backspace=2   " Backspace deletes like most programs in insert mode
 set nobackup
@@ -63,6 +66,12 @@ set wildmenu
 set splitright
 set splitbelow
 
+" Quickly toggle line numbers with leader-n
+noremap <leader>n :set number!<cr>
+
+" Save a file easier with leader-w
+noremap <leader>w :w<cr>
+
 " Quicker window movement
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -83,10 +92,18 @@ let g:netrw_banner = 0
 let g:netrw_browse_split = 4
 let g:netrw_winsize = 25
 let g:netrw_altv = 1
+let g:netrw_preview=1
 " launch when vim open
 augroup ProjectDrawer
   autocmd!
-  autocmd VimEnter * :Vexplore
+  autocmd TabNew * :Vexplore
+  "old: autocmd VimEnter * :Vexplore | wincmd w " have cursor in file on open
+  autocmd VimEnter * |
+        \ if argc() >= 1 | 
+          \ :Sexplore! | wincmd w | 
+        \ elseif argc() == 0 |
+          \ :Vexplore | 
+        \ endif 
 augroup END
 
 "" vim-airline aesthetic options
