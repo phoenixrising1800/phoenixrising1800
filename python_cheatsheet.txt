@@ -1,0 +1,152 @@
+Programming reference pages: 
+- [NTU.edu](https://www3.ntu.edu.sg/home/ehchua/programming/)
+
+--------------------------------------------------------------------------------
+
+### LOAD FILE IN PYTHON INTERPRETER (for debugging)
+run `python -i [filename].py`
+
+
+### PRINT FORMAT STRINGS
+count = "first"
+print("Hello for the %s time." % (count))
+
+
+### ARRAYS/LISTS, DICTIONARY
+- An array is just a collection of data.
+`myarray = ["Hello", "World!", 28, 22.5]`
+
+(We start counting from 0!: myarray[0] = "Hello" or the 1st item)
+* With arrays, you can only reference positions in the array using numbers.
+* With a dict, you associate one value with another, a key-value pair.
+print(myarray) # This prints all the values in the array.
+print(myarray[0]) # This prints the first value in the array 
+print(myarray[1]) # This prints the second value in the array.
+print(myarray[2]) # This prints the third value in the array.
+print(myarray[3]) # This prints the fourth value in the array.
+
+mydict = {"name": "Bob", "age": 23, "height": 180}
+print(mydict["name"])
+
+- You can also add to the end of an array...
+myarray.append("morestuff") # added to the end of the array
+
+- We can also change the values in a specific position of the array:
+myarray[3] = "changed" # We can see the fourth value in the array was changed to "changed".
+
+- We can also remove from the array:
+myarray.pop(3) # This removes the fourth item from the array
+
+# Similar to ARRAYS are DICTS or DICTIONARIES.
+- With arrays, you can only reference positions in the array using numbers.
+- With a dict, you associate one value with another, a key-value pair.
+* The colon ':' differentiates the key from the value.
+
+- In this example, name is the key and Bob is the value. If you
+- want to find out the name you can just do:
+`print(mydict["name"])`
+
+- To get the age:
+`print(mydict["age"])`
+
+
+### READING AND WRITING FILES
+ There are many different modes for opening a file in Python.
+ Here are just a few useful ones:
+ w - Allows you to write to a file only. If the file exists, it will be overwritten.
+ r - Allows you to read the file only.
+ r+ - Allows you to read and write to the file.
+ w+ - Allows you to read and write to the file, but if the file already exists it will overwrite it.
+ a - Allows you to append to the file (write to the end of an existing file)
+ a+ - Allows you to append to the file, and read from the file.
+
+`filecontents = myfile.read()`    # Getting the contents/data of a file
+
+`with open("/tmp/newfile.txt", "r") as myfile:    # Pretty/efficient way to open files, closing it for you
+  for line in myfile:
+    print(line)`
+
+
+`from time import sleep` # To use sleep([seconds])
+### USING SOCKETS
+Sockets are a way of sending data over a network.
+There are two main types of sockets, TCP and UDP.
+Which to use depends on the application you are communicating with.
+`import socket`
+
+## To make a connection to a TCP server:
+* Create a socket. 
+    AF_INET means you're connecting to an IPv4 IP address.
+    SOCK_STREAM means you are connecting over TCP and not UDP.
+* Tell the socket what IP address and Port number to connect to.
+* Send some data over the socket.
+* Receive some data back. The 1024 is the max number of bytes of data to accept.
+
+`clientsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+clientsocket.connect(('127.0.0.1', 9987))
+clientsocket.send('hello'.encode())
+data = clientsocket.recv(1024)
+print(data)`
+
+
+## To make a TCP Server:
+* Create a socket.
+* Bind the socket to listen to a port.
+* Tell the socket to start listening.
+* The 10 is the maximum number of connections.
+* If it gets a new connection, accept it and save the connection and address.
+* Read 1024 bytes of data from the connection.
+* Check the length of data. If the length is more than 0 then that means something was sent, so print it out.
+* Close the connection.
+* We don't need to keep listening any more so break out of the infinite loop Setup an infinite loop so the socket will keep listening for incoming connections.
+* Close the socket.
+
+`serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+serversocket.bind(("127.0.0.1", 9985))
+serversocket.listen(10)
+while True:
+    connection, address = serversocket.accept()
+    data = connection.recv(1024).decode()
+    if len(data) > 0:
+        print("Received: " + data)
+    connection.close()
+    break
+serversocket.close()
+sleep(0.05)`
+
+
+### MAKING HTTP REQUESTS FOR NETWORK CONNECTIONS
+* First, import necessary urllib modules
+`import urllib.request, urllib.error, urllib.parse`
+
+* Then you need to open the URL:
+`response = urllib.request.urlopen("http://127.0.0.1:8080")`
+
+* Now you just need to read the contents of the response:
+`html = response.read()
+print(html)`
+
+
+### ASCII--CONVERTING BETWEEN NUMBER AND LETTER REPRESENTATION
+[https://condor.depaul.edu/sjost/it236/documents/ascii.htm]
+chr() -- allows us to convert a decimal number to it's ASCII value.
+`char = chr(num)`
+
+ord() -- allows us to convert the ASCII character to it's decimal value.
+`dec = ord(char)`
+
+
+### REGEX AND PATTERNS (https://regexone.com/) 
+* USEFUL resource: [NTU.edu](https://tinyurl.com/Regex-ReferencePage)
+`import re`
+
+Pattern matching:
+  Ex.) Pattern to look for text occuring after 'flag: ' in a string:
+          `pattern = "flag: (.*)"`
+() - surround bit of text you want to extract
+.  - means to match any character
+*  - means any number of times
+
+* findall() -> Returns an array
+`flag = re.findall(pattern, text)
+print(flag[0])`

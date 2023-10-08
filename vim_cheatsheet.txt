@@ -1,0 +1,103 @@
+Quick reference pages:
+- [Vimhelp](https://vimhelp.org/quickref.txt.html)
+- **[Learn Vim the Smart Way](https://learnvim.irian.to/)
+- [Learn Vimscript the Hard Way](https://learnvimscriptthehardway.stevelosh.com/)
+- [Mastering Vim](https://github.com/PacktPublishing/Mastering-Vim)
+
+----------------------------------------
+### REFRESHING MODIFIED .VIMRC CONFIGS
+    `[:so %]` -- source current filename ('%') in buffer
+        OR
+    `[:so $MYVIMRC]`
+
+
+### QUICK CUSTOM MAPS/COMMANDS FOR EASE (leader = ',')
+    `[leader-w]` -- save a file instead of typing '[:w]'!!
+    `[leader-n]` -- toggle line numbers on and off
+    `[leader-ls]` -- quick execute [:ls!]-to easily list all buffers
+Resizing pane:
+    `[leader-<]` -- resize pane width +5 columns to the right
+    `[leader->]` -- resize pane width -5 columns to the left
+    `[leader-}]` -- resize pane height by factor of +1.5
+    `[leader-{]` -- resize pane height by factor of -0.67
+
+    `[:BufOnly]` -- kill all background buffers except active 
+
+
+### NAVIGATING/CLICKING LINKS 
+* Follow a link/jump to quickref topic under cursor:
+    `(Ctrl + ])` OR
+    `gx` -- follow URL under cursor
+* Jump to older locations
+    `(Ctrl - O)`
+* Jump to newer locations
+    `(Ctrl - I)`
+* Follows link in Vim's documentation
+    `[:tag tagname]`
+* Go back to prev. topic
+    `(Ctrl + T)`
+
+
+### DUPLICATING SINGLE CHAR n TIMES (WITHOUT leaving INSERT mode)
+    `(Ctrl + o) + [#: n]i + [CHAR: c] + (Esc)`
+            OR (with COMMAND mode)
+    `(Ctrl + o) + [:norm 80i-] + (Return)`
+
+* Ctrl + o -- get into command mode w/o leaving INSERT mode
+* n -- any number you want to duplicate, e.g. 80 
+* i -- insert command
+* c -- character you want inserted
+* Esc -- leave INSERT mode
+
+
+### WORKING WITH SETTINGS & VARIABLES
+    `[:options]` -- view current variables' settings
+    `[:set]` -- show vars. different from defaults
+    `[:set all]` -- show all values
+    `[:set foo?]` -- show value of 'foo' setting
+    `[:echo b:variable_name]` -- show value of *variable* (different from setting)
+
+    `[:set foo+=opt]` -- add opt to 'foo' setting w/o changing others
+    `[:set foo-=opt]` -- remove opt from 'foo' setting
+    `[:set foo&]` -- reset 'foo' setting to default value
+    `[:setlocal foo]` -- set the local (current buffer) value of 'foo'; does not apply to all open windows
+
+
+### NAVIGATING/VIEWING BUFFERS
+    `[:e(dit) <file>]` -- load or create file in active buffer
+    `[:ls/:files/:buffers]` -- list/view open buffers
+    `[:b(uffer)N <file>]` -- switches to file in other buffer
+        N = buffer # (optional--if known)
+    `[:bad(d) <file>]` -- add/load file into new buffer in background
+    `[:bd(elete) <file/N>]` -- delete buffer of file/index
+        `[:1,4bd]` -- can specify ranges of buffers to delete
+    `[:set hidden]` -- save edits in buffer memory, will not be discarded
+
+Buffer Symbols/Flags:
+~ Buffer in current win. will show '%'
+~ Active/current win. buffer will show 'a'
+~ Last edited buffer will show '#'
+~ Hidden buffer w/ unsaved edits will show 'h'
+~ Unlisted (unopened but in cwd) buffer will show 'u'
+~   * Use [:ls!] to view
+~ Buffer w/ 'modifiable' set off: '-'
+~ Read-only buffer: '='
+~ Modified buffer: '+'
+~ Buffer that has read errors: 'x'
+
+
+
+### NAVIGATING/VIEWING PANES
+    `[:sp(lit) <file>]` -- create horizontal split
+    `[:vs(plit) <file>]` -- create vertical split
+    `[(Ctrl + H/J/K/L)]` -- move currently active pane to direction
+
+Creating window panes with all current buffers
+    `[:ball]` --  opens all n buffers in n horizontal splits
+    `[:vertical ball]` -- opens all n buffers in n vertical splits
+
+### FORCE VIM TO REDRAW SCREEN/REFRESH
+    `[:redraw!]` OR `(Ctrl + L)`
+
+
+
