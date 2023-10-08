@@ -1,29 +1,20 @@
 " .Vimrc configuration
 " Author: Nixy (@phoenixrising1800)
 
-<<<<<<< HEAD
-=======
 "packloadall " Load all pack plugins in .vim/pack
->>>>>>> master
 set nocompatible
 
 " Aesthetic
 set encoding=utf-8
 set background=dark
 set t_Co=256
-<<<<<<< HEAD
 colorscheme desert
-=======
 colorscheme evening " or desert
->>>>>>> master
 
 " Leader
 let mapleader = ","
 
-<<<<<<< HEAD
-=======
 set nowrap        " Do not wrap overflowing lines to next line
->>>>>>> master
 set backspace=2   " Backspace deletes like most programs in insert mode
 set nobackup
 set nowritebackup
@@ -31,22 +22,22 @@ set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitigno
 set history=50
 set ruler         " show the cursor position all the time
 set showcmd       " display incomplete commands
-<<<<<<< HEAD
+
 set incsearch     " do incremental searching
 set ignorecase
-=======
+
 set sidescroll=1  " (For fast terminal), min. # columns to scroll horizontally
 set incsearch     " do incremental searching
 set ignorecase    " ignore case when performing searches
->>>>>>> master
+
 set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
 set modelines=0   " Disable modelines as a security precaution
 set nomodeline
-<<<<<<< HEAD
-=======
+
+
 set ttimeoutlen=50 " No pause when leaving insert mode
->>>>>>> master
+
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -91,12 +82,12 @@ set splitbelow
 " Quickly toggle line numbers with leader-n
 noremap <leader>n :set number!<cr>
 
-<<<<<<< HEAD
+
 " Save a file easier with leader-w
 noremap <leader>w :w<cr>
 
 " Quicker window movement
-=======
+
 " Easily close all buffers except the one in current buffer/window (use '[:BufOnly]' command)
 command! BufOnly execute '%bdelete|edit #|normal `"'
 
@@ -116,7 +107,7 @@ nnoremap <special> <leader>} :exe "res " . (winheight(0) * 3/2)<CR>
 nnoremap <special> <leader>{ :exe "res " . (winheight(0) * 2/3)<CR>
 
 " Quicker window movement (only need to hit Ctrl + h/j/k/l)
->>>>>>> master
+
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
@@ -130,7 +121,7 @@ set diffopt+=vertical
 
 set mouse=a
 
-<<<<<<< HEAD
+
 "" netrw browser
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0
@@ -154,7 +145,7 @@ augroup END
 "" vim-airline aesthetic options
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-=======
+
 "" NETRW BROWSER
 let g:netrw_liststyle = 1
 let g:netrw_banner = 1 "Show Netrw directory menu banner
@@ -215,4 +206,4 @@ let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 "" Current plugins:
 " vim-airline (:h vim-airline)
 " vim-table-mode (:h table-mode)
->>>>>>> master
+
