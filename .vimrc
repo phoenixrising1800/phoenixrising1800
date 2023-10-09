@@ -79,6 +79,12 @@ noremap <leader>n :set number!<cr>
 " Save a file easier with leader-w
 noremap <leader>w :w<cr>
 
+" Quick-close and save all buffers
+command! WQ execute ':wqall'
+
+"Quick-close all buffers without saving
+command! Q execute ':qall'
+
 " Easily close all buffers except the one in current buffer/window (use '[:BufOnly]' command)
 command! BufOnly execute '%bdelete|edit #|normal `"'
 
