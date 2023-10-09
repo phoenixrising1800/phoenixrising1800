@@ -186,7 +186,6 @@ let g:airline#extensions#tabline#show_tab_type = 0      " disables the weird ora
 
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
-
 "" Current plugins:
 " vim-airline (:h vim-airline)
 " vim-table-mode (:h table-mode)
