@@ -32,6 +32,8 @@ set modelines=0   " Disable modelines as a security precaution
 set nomodeline
 set ttimeoutlen=50 " No pause when leaving insert mode
 
+" Set filetype detection, plugin, and indent settings ON (check w/ :filetype)
+filetype plugin indent on
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -39,20 +41,18 @@ if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
 endif
 
-filetype plugin indent on
-
 " When the type of shell script is /bin/sh, assume a POSIX-compatible
 " shell for syntax highlighting purposes.
 let g:is_posix = 1
 
-" Softtabs, 2 spaces
-set tabstop=2
-set shiftwidth=2
+" Softtabs, 4 spaces
+set tabstop=4
+set shiftwidth=4
 set shiftround
 set expandtab
 
 " Display extra whitespace
-set list listchars=tab:»·,trail:·,nbsp:·
+set list listchars=tab:»·,trail:·,nbsp:·,precedes:<,extends:>
 
 " Use one space, not two, after punctuation.
 set nojoinspaces
@@ -85,6 +85,9 @@ command! BufOnly execute '%bdelete|edit #|normal `"'
 " Easily reload .vimrc modifications lately saved
 command! ReLoad execute 'so %'
 
+" Quickly open all current buffers in vertical panes
+command! Vball execute ':vertical ball'
+
 " Save a file easier with leader-w
 noremap <leader>w :w<cr>
 
@@ -103,6 +106,12 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
+" Quickly move window to direction (Ctrl + H/J/K/L)
+nnoremap <C-J> <C-w>J
+nnoremap <C-K> <C-w>K
+nnoremap <C-H> <C-w>H
+nnoremap <C-L> <C-w>L
+
 " Map Ctrl + p to open fuzzy find (FZF)
 nnoremap <c-p> :Files<cr>
 
@@ -110,6 +119,10 @@ nnoremap <c-p> :Files<cr>
 set diffopt+=vertical
 
 set mouse=a
+
+" Auto load fold views on buffer start of text file (preserve)
+autocmd BufWinLeave *.txt mkview
+autocmd BufWinEnter *.txt silent loadview
 
 "" NETRW BROWSER
 let g:netrw_liststyle = 1
@@ -172,3 +185,11 @@ let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 " vim-airline (:h vim-airline)
 " vim-table-mode (:h table-mode)
 
+" Output the current syntax group (may not work)
+nnoremap <f10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<cr>
+
+"" SET HIGHLIGHT COLOR FOR GROUPS
+" SpecialKeys (like tabs) are greyed out
+hi SpecialKey term=NONE ctermfg=grey guifg=grey70
