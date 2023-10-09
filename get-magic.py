@@ -48,7 +48,6 @@ def print_ints(magic_bytes: bytes):
 
 
 def main(args):
-    import sys
     from pathlib import Path
 
     typeList = [] # in case magic numbers match multiple types

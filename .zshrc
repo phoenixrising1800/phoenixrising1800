@@ -13,6 +13,7 @@ export ZSH="$HOME/.oh-my-zsh"
 #ZSH_THEME="agnoster"
 #ZSH_THEME="simple" <-- good
 #ZSH_THEME="tjkirch" <-- good
+#ZSH_THEME="macovsky-ruby" <-- good
 #ZSH_THEME="mlh" <-- good (simple, only current folder
 #ZSH_THEME="crunch"
 ZSH_THEME="random"
