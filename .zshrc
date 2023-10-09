@@ -6,9 +6,16 @@ export ZSH="$HOME/.oh-my-zsh"
 #### THEME #####################
 ## Set name of the theme to load for trying out
 #ZSH_THEME="robbyrussell"
-ZSH_THEME="jonathan"
+#ZSH_THEME="jonathan"
+#ZSH_THEME="miloshadzic"
+#ZSH_THEME="minimal"
+#ZSH_THEME="gnzh"
+#ZSH_THEME="agnoster"
+#ZSH_THEME="simple" <-- good
+#ZSH_THEME="tjkirch" <-- good
+#ZSH_THEME="mlh" <-- good (simple, only current folder
 #ZSH_THEME="crunch"
-#ZSH_THEME="random"
+ZSH_THEME="random"
 
 #### PLUGINS #####################
 # Standard plugins can be found in $ZSH/plugins/
@@ -50,7 +57,7 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # You can also set it to another string to have that shown instead of the default red dots.
 # e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
 # Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
+ COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories

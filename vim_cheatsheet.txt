@@ -5,6 +5,9 @@ Quick reference pages:
 - [Mastering Vim](https://github.com/PacktPublishing/Mastering-Vim)
 
 ----------------------------------------
+### NORMAL MODE (navigation commands)
+    `g-a` OR `[:as(cii)]` --  print the ascii value of character under cursor in dec/hex/oct
+
 
 ### QUICK CUSTOM MAPS FOR EASE (leader = ',')
     `[leader-w]` -- save a file instead of typing '[:w]'
@@ -101,7 +104,7 @@ Creating window panes with all current buffers
     `[:vertical ball]` -- opens all n buffers in n vertical splits
 
 ### FORCE VIM TO REDRAW SCREEN/REFRESH
-    `[:redraw!]` OR `(Ctrl + L)`
+    `[:redr(aw)!]` OR `(Ctrl + L)`
 
 
 

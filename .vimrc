@@ -23,7 +23,7 @@ set ruler         " show the cursor position all the time
 set showcmd       " display incomplete commands
 set incsearch     " do incremental searching
 set ignorecase
-set sidescroll=1  " (For fast terminal), min. # columns to scroll horizontally
+set sidescroll=0  " (For fast terminal), min. # columns to scroll horizontally
 set incsearch     " do incremental searching
 set ignorecase    " ignore case when performing searches
 set laststatus=2  " Always display the status line
@@ -52,7 +52,8 @@ set shiftround
 set expandtab
 
 " Display extra whitespace
-set list listchars=tab:»·,trail:·,nbsp:·,precedes:<,extends:>
+"set list listchars=tab:»·,trail:·,nbsp:·,precedes:<,extends:>
+set list listchars=tab:»·,trail:·,nbsp:·,precedes:<
 
 " Use one space, not two, after punctuation.
 set nojoinspaces
@@ -112,21 +113,15 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-" Quickly move window to direction (Ctrl + H/J/K/L)
-nnoremap <C-J> <C-w>J
-nnoremap <C-K> <C-w>K
-nnoremap <C-H> <C-w>H
-nnoremap <C-L> <C-w>L
-
-" Map Ctrl + p to open fuzzy find (FZF)
-nnoremap <c-p> :Files<cr>
+" Map Ctrl + p to open fuzzy find (FZF) (Doesn't work without FZF plugin)
+"nnoremap <c-p> :Files<cr>
 
 " Always use vertical diffs
 set diffopt+=vertical
 
 set mouse=a
 
-" Auto load fold views on buffer start of text file (preserve)
+" Auto load fold views on buffer start of text files (preserve)
 autocmd BufWinLeave *.txt mkview
 autocmd BufWinEnter *.txt silent loadview
 
