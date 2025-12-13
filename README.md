@@ -1,8 +1,9 @@
 <!--### Hi there 👋 -->
 # **About Me**
 
-- 📍 Undergrad pursuing my **B.S. in Computer Science** with a concentration in <u>**_Cybersecurity_**</u>
-- 🔭 I’m currently working on:
+- 📍 Formerly, focused this profile while in undergrad pursuing my **B.S. in Computer Science** with a concentration in <u>**_Cybersecurity_**</u>
+- ⚠️ Now, I am an IT professional with an inclination for Security Operations & Engineering.
+- 🔭 Previous internship projects:
     * Extracting data from KaiOS devices ([_sqlite-scraper_](https://github.com/joedinsmoor/sqlite_scraper)) 
     * Parsing vehicle infotainment logs to extract forensics data as a contributor ([_VLEAPP_](https://github.com/abrignoni/VLEAPP)) 
 - 😄 Pronouns: she/her
