@@ -27,7 +27,7 @@ mapfile -t my_list < <(netstat.exe -ano | awk '
 # Ideally it should look like this:
 # FOREIGN IP      PORT
 # xxx.xxx.x       443
-printf '%-40s %-60s %-6s %-8s %-10s %s\n' "FOREIGN IP" "HOSTNAME" "PORT" "COUNTRY" "ASN" "ORG"
+printf '%-20s %-60s %-6s %-8s %-10s %s\n' "FOREIGN IP" "HOSTNAME" "PORT" "COUNTRY" "ASN" "ORG"
 
 # Cache to avoid repeated API calls [thanks ChatGPT]
 declare -A cache
@@ -51,10 +51,10 @@ for item in "${my_list[@]}"; do
   json="${cache[$ip]}"
 
   country=$(jq -r '.country // "N/A"' <<< "$json")
-  org=$(jq -r '.org // "N/A"' <<< "$json")
+  org=$(jq -r '.org // "N/A"' <<< "$json" | awk 'sub("^" $1 FS, _)') # Print all columns except the first, which is repeat of ASN
   asn=$(jq -r '.org // "N/A" | split(" ")[0]' <<< "$json")
   hostname=$(jq -r '.hostname // "N/A"' <<< "$json")
 
-  printf '%-40s %-60s %-6s %-8s %-10s %s\n' \
+  printf '%-20s %-60s %-6s %-8s %-10s %s\n' \
     "$ip" "$hostname" "$port" "$country" "$asn" "$org"
 done
