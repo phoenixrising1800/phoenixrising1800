@@ -1,10 +1,7 @@
 #!/bin/bash
 # -----------------
-# This is a comment. Script to check local ESTABLISHED TCP connections to foreign IP addresses. 
+# This is a comment. Script to check local ESTABLISHED TCP connections to foreign IP addresses.
 # Uses the Windows Netstat + parses/enriches information
-
-## NEXT TO-DO: Further enrich information with additional data for clarity of where it's coming from.
-## E.g. on whatismyipaddress.com the Hostname shows "sockets.betterttv.net" for the OVH Hosting Inc. IP (192.99.44.206), so it's obviouly from one of my Edge browser add-ons.
 
 echo "ESTABLISHED Foreign Addresses not local: "
 echo "************************************"
@@ -16,7 +13,7 @@ mapfile -t my_list < <(netstat.exe -ano | awk '
   if ($3 !~ /^(10\.|192\.168\.|172\.(1[6-9]|2[0-9]|3[01])\.)/ &&
       $3 !~ /^\[::1/)
     print $3
-} 
+}
 ') # Don't print (local) addresses beginning with '10. | 192.168 | 172. | [::1' etc.
 
 # 2. Iterate through list index + value
@@ -26,11 +23,11 @@ mapfile -t my_list < <(netstat.exe -ano | awk '
 #  echo "[$i] = ${my_list[$i]}"
 #done
 
-# 3. For each list item, separate out the IP and Port
+# 3. For each list item, separate out the IP and Port, query IP Info, and print enrichment
 # Ideally it should look like this:
 # FOREIGN IP      PORT
 # xxx.xxx.x       443
-printf '%-40s %-6s %-8s %-10s %s\n' "FOREIGN IP" "PORT" "COUNTRY" "ASN" "ORG"
+printf '%-40s %-60s %-6s %-8s %-10s %s\n' "FOREIGN IP" "HOSTNAME" "PORT" "COUNTRY" "ASN" "ORG"
 
 # Cache to avoid repeated API calls [thanks ChatGPT]
 declare -A cache
@@ -56,9 +53,8 @@ for item in "${my_list[@]}"; do
   country=$(jq -r '.country // "N/A"' <<< "$json")
   org=$(jq -r '.org // "N/A"' <<< "$json")
   asn=$(jq -r '.org // "N/A" | split(" ")[0]' <<< "$json")
+  hostname=$(jq -r '.hostname // "N/A"' <<< "$json")
 
-  printf '%-40s %-6s %-8s %-10s %s\n' \
-    "$ip" "$port" "$country" "$asn" "$org"
+  printf '%-40s %-60s %-6s %-8s %-10s %s\n' \
+    "$ip" "$hostname" "$port" "$country" "$asn" "$org"
 done
-# -----------------------------------
-# TO-DO with further enrichment/contextulization of IP sources
